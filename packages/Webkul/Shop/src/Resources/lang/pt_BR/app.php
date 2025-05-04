@@ -803,6 +803,7 @@ return [
                 'street-address'         => 'Endereço',
                 'telephone'              => 'Telefone',
                 'title'                  => 'Endereço',
+                'vat-id'                 => 'ID do IVA',
             ],
 
             'index' => [
@@ -977,6 +978,12 @@ return [
                 'greeting'    => 'Bem-vindo à nossa newsletter!',
                 'subject'     => 'Você! Inscreva-se na Nossa Newsletter',
                 'unsubscribe' => 'Cancelar Inscrição',
+            ],
+
+            'reminder' => [
+                'already-paid'    => 'Se você já efetuou o pagamento, por favor ignore esta mensagem.',
+                'invoice-overdue' => 'Este é um lembrete amigável de que sua fatura está vencida. Solicitamos gentilmente que efetue o pagamento o mais rápido possível.',
+                'subject'         => 'Lembrete de fatura',
             ],
         ],
 

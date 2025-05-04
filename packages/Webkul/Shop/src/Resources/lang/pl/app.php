@@ -803,6 +803,7 @@ return [
                 'street-address'         => 'Adres ulicy',
                 'telephone'              => 'Telefon',
                 'title'                  => 'Adres',
+                'vat-id'                 => 'Numer VAT',
             ],
 
             'index' => [
@@ -977,6 +978,12 @@ return [
                 'greeting'    => 'Witaj w naszym newsletterze!',
                 'subject'     => 'Zapisano się na nasz newsletter',
                 'unsubscribe' => 'Wypisz się',
+            ],
+
+            'reminder' => [
+                'already-paid'    => 'Jeśli już dokonałeś płatności, zignoruj tę wiadomość.',
+                'invoice-overdue' => 'To uprzejme przypomnienie, że twoja faktura jest zaległa. Prosimy o dokonanie płatności najszybciej, jak to możliwe.',
+                'subject'         => 'Przypomnienie o fakturze',
             ],
         ],
 

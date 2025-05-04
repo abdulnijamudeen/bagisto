@@ -803,6 +803,7 @@ return [
                 'street-address'         => 'Indirizzo',
                 'telephone'              => 'Telefono',
                 'title'                  => 'Indirizzo',
+                'vat-id'                 => 'Partita IVA',
             ],
 
             'index' => [
@@ -977,6 +978,12 @@ return [
                 'greeting'    => 'Benvenuto nella nostra newsletter!',
                 'subject'     => 'Ti sei iscritto alla nostra newsletter!',
                 'unsubscribe' => 'Annulla iscrizione',
+            ],
+
+            'reminder' => [
+                'already-paid'    => 'Se hai già effettuato il pagamento, ignora questo messaggio.',
+                'invoice-overdue' => 'Questo è un gentile promemoria che la tua fattura è scaduta. Ti preghiamo di effettuare il pagamento al più presto.',
+                'subject'         => 'Promemoria fattura',
             ],
         ],
 

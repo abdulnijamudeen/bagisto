@@ -803,6 +803,7 @@ return [
                 'street-address'         => 'Street Address',
                 'telephone'              => 'Telephone',
                 'title'                  => 'Address',
+                'vat-id'                 => 'Vat ID',
             ],
 
             'index' => [
@@ -977,6 +978,12 @@ return [
                 'greeting'    => 'Welcome to our newsletter!',
                 'subject'     => 'You! Subscribe to Our Newsletter',
                 'unsubscribe' => 'Unsubscribe',
+            ],
+
+            'reminder' => [
+                'already-paid'    => 'If you have already made the payment, please disregard this message.',
+                'invoice-overdue' => 'This is a gentle reminder that your invoice is now overdue. We kindly request you to make the payment at your earliest convenience.',
+                'subject'         => 'Invoice reminder',
             ],
         ],
 

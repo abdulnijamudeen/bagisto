@@ -1104,7 +1104,7 @@ return [
                 'title' => 'admin::app.configuration.index.email.notifications.customer-registration-confirmation-mail-to-admin',
                 'type'  => 'boolean',
             ], [
-                'name'  => 'emails.general.notifications.customer',
+                'name'  => 'emails.general.notifications.customer_account_credentials',
                 'title' => 'admin::app.configuration.index.email.notifications.customer',
                 'type'  => 'boolean',
             ], [
@@ -1112,20 +1112,32 @@ return [
                 'title' => 'admin::app.configuration.index.email.notifications.new-order',
                 'type'  => 'boolean',
             ], [
-                'name'  => 'emails.general.notifications.new_admin',
-                'title' => 'admin::app.configuration.index.email.notifications.new-admin',
+                'name'  => 'emails.general.notifications.new_order_mail_to_admin',
+                'title' => 'admin::app.configuration.index.email.notifications.new-order-mail-to-admin',
                 'type'  => 'boolean',
             ], [
                 'name'  => 'emails.general.notifications.new_invoice',
                 'title' => 'admin::app.configuration.index.email.notifications.new-invoice',
                 'type'  => 'boolean',
             ], [
+                'name'  => 'emails.general.notifications.new_invoice_mail_to_admin',
+                'title' => 'admin::app.configuration.index.email.notifications.new-invoice-mail-to-admin',
+                'type'  => 'boolean',
+            ], [
                 'name'  => 'emails.general.notifications.new_refund',
                 'title' => 'admin::app.configuration.index.email.notifications.new-refund',
                 'type'  => 'boolean',
             ], [
+                'name'  => 'emails.general.notifications.new_refund_mail_to_admin',
+                'title' => 'admin::app.configuration.index.email.notifications.new-refund-mail-to-admin',
+                'type'  => 'boolean',
+            ], [
                 'name'  => 'emails.general.notifications.new_shipment',
                 'title' => 'admin::app.configuration.index.email.notifications.new-shipment',
+                'type'  => 'boolean',
+            ], [
+                'name'  => 'emails.general.notifications.new_shipment_mail_to_admin',
+                'title' => 'admin::app.configuration.index.email.notifications.new-shipment-mail-to-admin',
                 'type'  => 'boolean',
             ], [
                 'name'  => 'emails.general.notifications.new_inventory_source',
@@ -1134,6 +1146,10 @@ return [
             ], [
                 'name'  => 'emails.general.notifications.cancel_order',
                 'title' => 'admin::app.configuration.index.email.notifications.cancel-order',
+                'type'  => 'boolean',
+            ],  [
+                'name'  => 'emails.general.notifications.cancel_order_mail_to_admin',
+                'title' => 'admin::app.configuration.index.email.notifications.cancel-order-mail-to-admin',
                 'type'  => 'boolean',
             ],
         ],
@@ -1205,11 +1221,11 @@ return [
                 'title'         => 'admin::app.configuration.index.sales.shipping-setting.origin.vat-number',
                 'type'          => 'text',
                 'channel_based' => true,
-                'validation'    => 'phone',
             ], [
                 'name'          => 'contact',
                 'title'         => 'admin::app.configuration.index.sales.shipping-setting.origin.contact-number',
                 'type'          => 'text',
+                'validation'    => 'phone',
                 'channel_based' => true,
             ], [
                 'name'          => 'bank_details',
@@ -1593,7 +1609,7 @@ return [
         'key'    => 'sales.payment_methods.paypal_smart_button',
         'name'   => 'admin::app.configuration.index.sales.payment-methods.paypal-smart-button',
         'info'   => 'admin::app.configuration.index.sales.payment-methods.paypal-smart-button-info',
-        'sort'   => 0,
+        'sort'   => 4,
         'fields' => [
             [
                 'name'          => 'title',
@@ -1635,6 +1651,7 @@ return [
                 'validation'    => 'required_if:active,1',
                 'channel_based' => true,
                 'locale_based'  => false,
+                'default'       => 'CLIENT_SECRET',
             ], [
                 'name'          => 'accepted_currencies',
                 'title'         => 'admin::app.configuration.index.sales.payment-methods.accepted-currencies',
@@ -1644,6 +1661,7 @@ return [
                 'validation'    => 'required_if:active,1',
                 'channel_based' => true,
                 'locale_based'  => false,
+                'default'       => 'USD',
             ], [
                 'name'          => 'active',
                 'title'         => 'admin::app.configuration.index.sales.payment-methods.status',

@@ -20,31 +20,31 @@ class ThemeDataGrid extends DataGrid
 
         $queryBuilder = DB::table('theme_customizations')
             ->distinct()
-            ->join('theme_customization_translations', function ($leftJoin) use ($whereInLocales) {
-                $leftJoin->on('theme_customizations.id', '=', 'theme_customization_translations.theme_customization_id')
+            ->leftJoin('theme_customization_translations', function ($join) use ($whereInLocales) {
+                $join->on('theme_customizations.id', '=', 'theme_customization_translations.theme_customization_id')
                     ->whereIn('theme_customization_translations.locale', $whereInLocales);
             })
-            ->join('channel_translations', function ($leftJoin) use ($whereInLocales) {
-                $leftJoin->on('theme_customizations.channel_id', '=', 'channel_translations.channel_id')
+            ->leftJoin('channel_translations', function ($join) use ($whereInLocales) {
+                $join->on('theme_customizations.channel_id', '=', 'channel_translations.channel_id')
                     ->whereIn('channel_translations.locale', $whereInLocales);
             })
             ->select(
                 'theme_customizations.id',
                 'theme_customizations.type',
                 'theme_customizations.sort_order',
-                'channel_translations.name as channel_name',
                 'theme_customizations.status',
-                'theme_customizations.name as name',
+                'theme_customizations.name as theme_customization_name',
                 'theme_customizations.theme_code',
-                'theme_customizations.channel_id'
+                'theme_customizations.channel_id',
+                'channel_translations.name as channel_name'
             );
 
         $this->addFilter('id', 'theme_customizations.id');
         $this->addFilter('type', 'theme_customizations.type');
-        $this->addFilter('name', 'theme_customizations.name');
+        $this->addFilter('theme_customization_name', 'theme_customizations.name');
         $this->addFilter('sort_order', 'theme_customizations.sort_order');
         $this->addFilter('status', 'theme_customizations.status');
-        $this->addFilter('channel_name', 'theme_customizations.channel_id');
+        $this->addFilter('channel_name', 'channel_translations.name');
         $this->addFilter('theme_code', 'theme_customizations.theme_code');
 
         return $queryBuilder;
@@ -58,14 +58,6 @@ class ThemeDataGrid extends DataGrid
     public function prepareColumns()
     {
         $themes = config('themes.shop');
-
-        $this->addColumn([
-            'index'      => 'id',
-            'label'      => trans('admin::app.settings.themes.index.datagrid.id'),
-            'type'       => 'integer',
-            'filterable' => true,
-            'sortable'   => true,
-        ]);
 
         $this->addColumn([
             'index'              => 'channel_name',
@@ -106,7 +98,7 @@ class ThemeDataGrid extends DataGrid
         ]);
 
         $this->addColumn([
-            'index'      => 'name',
+            'index'      => 'theme_customization_name',
             'label'      => trans('admin::app.settings.themes.index.datagrid.name'),
             'type'       => 'string',
             'searchable' => true,
@@ -171,6 +163,39 @@ class ThemeDataGrid extends DataGrid
                 'url'    => function ($row) {
                     return route('admin.settings.themes.delete', $row->id);
                 },
+            ]);
+        }
+    }
+
+    /**
+     * Prepare mass actions.
+     *
+     * @return void
+     */
+    public function prepareMassActions()
+    {
+        if (bouncer()->hasPermission('settings.themes.edit')) {
+            $this->addMassAction([
+                'title'   => trans('admin::app.settings.themes.index.datagrid.change-status'),
+                'url'     => route('admin.settings.themes.mass_update'),
+                'method'  => 'POST',
+                'options' => [
+                    [
+                        'label'  => trans('admin::app.settings.themes.index.datagrid.active'),
+                        'value'  => 1,
+                    ], [
+                        'label'  => trans('admin::app.settings.themes.index.datagrid.inactive'),
+                        'value'  => 0,
+                    ],
+                ],
+            ]);
+        }
+
+        if (bouncer()->hasPermission('settings.themes.delete')) {
+            $this->addMassAction([
+                'title'  => trans('admin::app.settings.themes.index.datagrid.delete'),
+                'url'    => route('admin.settings.themes.mass_delete'),
+                'method' => 'POST',
             ]);
         }
     }

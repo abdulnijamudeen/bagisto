@@ -803,6 +803,7 @@ return [
                 'street-address'         => 'Straßenadresse',
                 'telephone'              => 'Telefon',
                 'title'                  => 'Adresse',
+                'vat-id'                 => 'USt-IdNr.',
             ],
 
             'index' => [
@@ -977,6 +978,12 @@ return [
                 'greeting'    => 'Willkommen in unserem Newsletter!',
                 'subject'     => 'Sie! Abonnement unseres Newsletters',
                 'unsubscribe' => 'Abmelden',
+            ],
+
+            'reminder' => [
+                'already-paid'    => 'Falls Sie die Zahlung bereits vorgenommen haben, ignorieren Sie bitte diese Nachricht.',
+                'invoice-overdue' => 'Dies ist eine freundliche Erinnerung daran, dass Ihre Rechnung überfällig ist. Bitte nehmen Sie die Zahlung so bald wie möglich vor.',
+                'subject'         => 'Rechnungserinnerung',
             ],
         ],
 

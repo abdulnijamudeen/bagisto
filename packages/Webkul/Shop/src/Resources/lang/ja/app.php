@@ -803,6 +803,7 @@ return [
                 'street-address'         => '住所',
                 'telephone'              => '電話番号',
                 'title'                  => '住所',
+                'vat-id'                 => 'VAT番号',
             ],
 
             'index' => [
@@ -977,6 +978,12 @@ return [
                 'greeting'    => 'ニュースレターへようこそ！',
                 'subject'     => 'ニュースレターに登録しました',
                 'unsubscribe' => '登録解除',
+            ],
+
+            'reminder' => [
+                'already-paid'    => 'お支払いがお済みの場合は、このメッセージを無視してください。',
+                'invoice-overdue' => 'これは、ご請求書の期限が過ぎていることをお知らせするための親切なリマインダーです。できるだけ早くお支払いください。',
+                'subject'         => '請求書のリマインダー',
             ],
         ],
 
